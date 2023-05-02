@@ -1,4 +1,25 @@
 // Function triggered when WEBMIDI.js is ready
+
+navigator.requestMIDIAccess()
+.then(midiAccess => {
+  // use the midiAccess object to access MIDI devices
+  console.log("Ok requesting MIDI access:", midiAccess);
+})
+.catch(error => {
+  console.log("Error requesting MIDI access:", error);
+});
+
+console.log("Auth ok");
+
+navigator.requestMIDIAccess()
+.then(midiAccess => {
+  console.log("Available MIDI inputs:", midiAccess.inputs);
+})
+.catch(error => {
+  console.log("Error requesting MIDI access:", error);
+});
+
+
 function onEnabled() {
 
   // Display available MIDI input devices
@@ -18,26 +39,6 @@ function onEnabled() {
 function setup() {
   //createCanvas(400, 400);
   console.log("Starting setup");
-
-  navigator.requestMIDIAccess()
-  .then(midiAccess => {
-    // use the midiAccess object to access MIDI devices
-    console.log("Ok requesting MIDI access:", midiAccess);
-  })
-  .catch(error => {
-    console.log("Error requesting MIDI access:", error);
-  });
-
-  console.log("Auth ok");
-
-  navigator.requestMIDIAccess()
-  .then(midiAccess => {
-    console.log("Available MIDI inputs:", midiAccess.inputs);
-  })
-  .catch(error => {
-    console.log("Error requesting MIDI access:", error);
-  });
-
 
 //  WebMidi
 //    .enable()
